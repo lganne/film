@@ -7,7 +7,17 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <container>
+        <nav>
+                <ul class="nav nav-pills">
+                    <li><a href="{{ path('homepage') }}" title="Accueil">Accueil</a></li>
+                     <li><a href="{{ path('logout') }}" title="LogOut">Log out</a>
+                   
+                         
+                    </ul>
+        </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+</container>
     </body>
 </html>
