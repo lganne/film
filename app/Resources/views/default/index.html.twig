@@ -1,7 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Homepage.
+ 
+  {%if (page>1)%}
+         <<<a href="{{path('homepage',{'page':page-1})}}">page precedente</a>
+     {% endif%}
+         page {{page}} / {{nbrePg}}
+        
+        {% if(page<nbrePg)%}
+                <a href="{{path('homepage',{'page':page+1})}}">page suivante</a> >>
+       {% endif%}
     <table>
         <tr>
             {% set i=1%}

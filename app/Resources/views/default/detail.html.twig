@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% block title %} {{parent()}}| {{detail.titre}}{% endblock %}
 {% block body %}
     <h2> {{detail.titre}}</h2>
     <h3>Note : {{detail.note}}</h3>
