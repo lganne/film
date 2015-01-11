@@ -11,13 +11,14 @@
         <nav>
                 <ul class="nav nav-pills">
                     <li><a href="{{ path('homepage') }}" title="Accueil">Accueil</a></li>
-                     <li><a href="{{ path('logout') }}" title="LogOut">Log out</a>
+                    <li><a href="{{ path('inscription') }}" title="Login">Login</a></li>
+                    <li><a href="{{ path('logout') }}" title="LogOut">Log out</a></li>
                    
                          
                     </ul>
         </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-</container>
+    </container>
     </body>
 </html>

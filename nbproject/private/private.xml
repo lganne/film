@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Form/RegistrationType.php</file>
+            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Controller/AccueilController.php</file>
             <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/User.php</file>
             <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Controller/UserController.php</file>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/inscription.html.twig</file>
-            <file>file:/C:/wamp/www/symfony2/film/app/config/parameters.yml</file>
+            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/default/index.html.twig</file>
         </group>
     </open-files>
 </project-private>

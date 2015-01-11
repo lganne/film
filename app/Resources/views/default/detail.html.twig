@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2> {{detail.titre}}</h2>
+    <h3>Note : {{detail.note}}</h3>
+       <img src="{{detail.urlAffiche}}" value="{{detail.id}}" />
+    <table border='1px'>
+        <tr><th>Genre</th><th>date de sortie</th><th>Resumer</th><th>Acteurs</th><th>Realisateur</th><th>Scenariste</th><th>pays</th><th>votes</th></tr>
+        <tr>
+            <td>
+                {{detail.genres}}
+            </td>
+               <td>
+                   {{detail.sortie|date('d/m/Y')}}
+            </td>
+            <td>
+                {{detail.resume}}
+            </td>
+                        <td>
+                {{detail.acteurs}}
+            </td>
+               <td>
+                {{detail.realisateur}}
+            </td>
+               <td>
+                {{detail.scenariste}}
+            </td>
+             <td>
+                {{detail.paysRealisation}}
+            </td>
+             <td>
+                {{detail.votes}}
+            </td>
+        </tr>
+        
+    </table>
+{% endblock %}
