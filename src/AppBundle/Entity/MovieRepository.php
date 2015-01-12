@@ -16,10 +16,24 @@ class MovieRepository extends EntityRepository
     public function countAll()
     {
         $count=0;
-        $count=$this->createQueryBuilder('id')
-                 ->select('COUNT(id)')
+        $count=$this->createQueryBuilder('m')
+                 ->select('COUNT(m.id)')
                 ->getQuery()
                  ->getSingleScalarResult();
         return $count;
+    }
+    
+    public function FiltreDate()
+    {
+        $qb = $this->createQueryBuilder('m')
+                        ->select('MIN(m.annee)')
+                        ->getQuery()
+                        ->getSingleScalarResult();
+        
+//                  ->getSingleScalarResult();
+//       ->from('AppBundle:Movie','annee')
+//       ->groupBy('annee');
+ 
+        return $qb;
     }
 }

@@ -2,6 +2,32 @@
 
 {% block body %}
  
+    {#  filtre date #}
+    <h4>Trier par date</h4>
+    <form method="post" action="{{path('parDate')}}">
+            <label>De</label>
+           <select>
+               {% set datmin=datefiltre %}
+               {% for i in datmin.. 'now'|date('Y') %}
+                             <option name="min">   {{datmin}}</option>
+                        {% set datmin=datmin+1%}
+               {% endfor%}
+
+           </select>
+                  <label>A</label>
+               <select>
+
+               {% set datmin=datefiltre %}
+               {% for i in datmin.. 'now'|date('Y') %}
+                             <option name=max">   {{datmin}}</option>
+                        {% set datmin=datmin+1%}
+               {% endfor%}
+               </select>
+               <input type='button' name='ok' value='ok'   />
+{#<a id="btn_delete" href="{{ path('parDate') }}">ok</a>#}
+    </form>
+        <br>
+    {#  pagination  #}
   {%if (page>1)%}
          <<<a href="{{path('homepage',{'page':page-1})}}">page precedente</a>
      {% endif%}
@@ -19,7 +45,7 @@
                  {% set i=1%}
            {%endif%}
         <td>
-             <h2> {{film.titre}}</h2> 
+             <h4> {{film.titre}}</h4> 
              <a href="{{path('detail',{'id':film.id}) }}"  ><img src="{{film.urlAffiche}}" value="{{film.id}}" /><a>
                   
         </td>
