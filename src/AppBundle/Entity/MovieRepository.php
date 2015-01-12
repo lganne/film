@@ -36,4 +36,32 @@ class MovieRepository extends EntityRepository
  
         return $qb;
     }
+    
+    public function resultatFitre($max,$min)
+    {
+         $qb = $this->createQueryBuilder('m')
+                        ->select()
+                        ->where('m.annee BETWEEN :min AND :max')
+                       ->setParameter('min', $min)
+                      ->setParameter('max', $max)
+                      ->setMaxResults(54)
+                      ->getQuery()
+                       ->getResult();
+                       
+        return $qb;
+    }  
+    
+    public function countFiltre($max,$min)
+    {
+         $qb = $this->createQueryBuilder('m')
+                        ->select('COUNT(m.id)')
+                        ->where('m.annee BETWEEN :min AND :max')
+                       ->setParameter('min', $min)
+                      ->setParameter('max', $max)
+                      ->getQuery()
+                       ->getResult();
+                       
+        return $qb;
+    }
+       
 }

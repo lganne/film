@@ -18,14 +18,29 @@ class AccueilController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $repo=$em->getrepository("AppBundle:Movie");
-         $film=$this->getDoctrine()->getRepository("AppBundle:Movie");
-         $nbr=$film->countAll();
-         $datemin=$film->FiltreDate();
-
-         $nbrePage=  \ceil($nbr/54);
          $numParPage=54;
-        $offset=($page-1)*$numParPage;
-        $data=$repo->findby(array(),array("note"=>"DESC"),54,$offset);
+          $min= $request->request->get('min');
+         $max= $request->request->get('max');
+         $datemin=$repo->FiltreDate();  // remplir combo select date
+            if(isset($min))
+            {
+                $data=$repo->resultatFitre($max,$min);
+                $nbr=$repo->countFiltre($max,$min);
+//                $nbrePage= $nbr/54;
+                $nbrePage=1;
+            }
+            else
+            {
+               $nbr=$repo->countAll();
+                $nbrePage=  \ceil($nbr/54);
+               $offset=($page-1)*$numParPage;
+               $data=$repo->findby(array(),array("note"=>"DESC"),54,$offset);
+            }
+
+        
+        
+     
+        
        // print_r($data);
         return $this->render('default/index.html.twig',array('liste'=>$data,'page'=>$page,'nbrePg'=>$nbrePage,'datefiltre'=>(int)$datemin));
     }
@@ -46,10 +61,18 @@ class AccueilController extends Controller
     /**
      * @Route("/parDate", name="parDate")
      */
-    public function  parDateAction()
-    {
-        return $this->render('default/date.html.twig');
-    }
+//    public function  parDateAction(Request $request)
+//    {
+//       $min= $request->request->get('min');
+//       $max= $request->request->get('max');
+//       $em=$this->getDoctrine()->getManager();
+//        $repo=$em->getrepository("AppBundle:Movie");
+//        $data=$repo->resultatFitre($max,$min);
+//       $count=$repo->countFiltre($max,$min);
+//       dump($count);
+//       die();
+//        return $this->render('default/date.html.twig',array('data'=>$data));
+//    }
 
    
    

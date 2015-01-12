@@ -4,26 +4,26 @@
  
     {#  filtre date #}
     <h4>Trier par date</h4>
-    <form method="post" action="{{path('parDate')}}">
+   <form method="post"  />   {# action="{{path('parDate')}}">#}
             <label>De</label>
-           <select>
+           <select name="min">
                {% set datmin=datefiltre %}
                {% for i in datmin.. 'now'|date('Y') %}
-                             <option name="min">   {{datmin}}</option>
+                             <option  value="{{datmin}}">   {{datmin}}</option>
                         {% set datmin=datmin+1%}
                {% endfor%}
 
            </select>
                   <label>A</label>
-               <select>
+               <select name="max">
 
                {% set datmin=datefiltre %}
                {% for i in datmin.. 'now'|date('Y') %}
-                             <option name=max">   {{datmin}}</option>
+                             <option value="{{datmin}}">   {{datmin}}</option>
                         {% set datmin=datmin+1%}
                {% endfor%}
                </select>
-               <input type='button' name='ok' value='ok'   />
+               <input type='submit' name='ok' value='ok'   />
 {#<a id="btn_delete" href="{{ path('parDate') }}">ok</a>#}
     </form>
         <br>

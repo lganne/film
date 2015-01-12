@@ -1,6 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-passer
+    
+     <table>
+        <tr>
+            {% set i=1%}
+    {% for film in data%}
+         {% if i==7 %}
+              </tr><tr>
+                 {% set i=1%}
+           {%endif%}
+        <td>
+             <h4> {{film.titre}}</h4> 
+             <a href="{{path('detail',{'id':film.id}) }}"  ><img src="{{film.urlAffiche}}" value="{{film.id}}" /><a>
+                  
+        </td>
+        {% set i=i+1%}
+    {%endfor%}
+    </tr>
+    </table>
+{% endblock %}
 
-{% endblock%}
+
