@@ -12,37 +12,51 @@ class AccueilController extends Controller
     /**
      * @Route("/{page}", name="homepage",
      * requirements={"page"="\d+"},
-     * defaults ={"page"=1})
+     *  defaults ={"page"=1}
+     *  )
      */
     public function indexAction($page,Request $request)
     {
+        
         $em=$this->getDoctrine()->getManager();
         $repo=$em->getrepository("AppBundle:Movie");
          $numParPage=54;
-          $min= $request->request->get('min');
-         $max= $request->request->get('max');
+          $min= $request->query->get('min');  // si methode post $min=$request->request->get('min'); 
+         $max= $request->query->get('max');
+          $ok=  $request->query->get('ok');     
+           $offset=($page-1)*$numParPage;
          $datemin=$repo->FiltreDate();  // remplir combo select date
-            if(isset($min))
+            if(isset($min)&& $min!=0)
             {
-                $data=$repo->resultatFitre($max,$min);
-                $nbr=$repo->countFiltre($max,$min);
-//                $nbrePage= $nbr/54;
-                $nbrePage=1;
+                $data=$repo->resultatFitre($max,$min,$offset);
+                $nbr=$repo->countFiltre($max,$min,$offset);
+                $nbrePage=  \ceil($nbr/54);
+               
             }
             else
             {
+               $min=0;
+               $max=3000;
                $nbr=$repo->countAll();
                 $nbrePage=  \ceil($nbr/54);
-               $offset=($page-1)*$numParPage;
-               $data=$repo->findby(array(),array("note"=>"DESC"),54,$offset);
+                $data=$repo->findby(array(),array("note"=>"DESC"),54,$offset);
             }
 
+        $data=array('liste'=>$data,
+            'page'=>$page,
+            'nbrePg'=>$nbrePage,
+            'datefiltre'=>(int)$datemin,
+            'min'=>$min,
+             'max'=>$max,
+               'offset'=>$offset,
+              'numParPage'=>$numParPage
+                );
         
-        
-     
+//        'offset'=>$offset,
+  //             'numParPage'=>$numParPage
         
        // print_r($data);
-        return $this->render('default/index.html.twig',array('liste'=>$data,'page'=>$page,'nbrePg'=>$nbrePage,'datefiltre'=>(int)$datemin));
+        return $this->render('default/index.html.twig',$data);
     }
     /**
      * @Route("/detail/{id}", name="detail")

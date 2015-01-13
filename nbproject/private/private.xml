@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/base.html.twig</file>
             <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Controller/AccueilController.php</file>
-            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/User.php</file>
+            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/Movie.php</file>
             <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Controller/UserController.php</file>
+            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/default/detail.html.twig</file>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/inscription.html.twig</file>
+            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/MovieRepository.php</file>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/default/index.html.twig</file>
         </group>
     </open-files>

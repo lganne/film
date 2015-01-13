@@ -30,21 +30,18 @@ class MovieRepository extends EntityRepository
                         ->getQuery()
                         ->getSingleScalarResult();
         
-//                  ->getSingleScalarResult();
-//       ->from('AppBundle:Movie','annee')
-//       ->groupBy('annee');
- 
+
         return $qb;
     }
     
-    public function resultatFitre($max,$min)
+    public function resultatFitre($max,$min,$offset)
     {
          $qb = $this->createQueryBuilder('m')
                         ->select()
                         ->where('m.annee BETWEEN :min AND :max')
                        ->setParameter('min', $min)
                       ->setParameter('max', $max)
-                      ->setMaxResults(54)
+                      ->setMaxResults(54,$offset)
                       ->getQuery()
                        ->getResult();
                        
@@ -59,7 +56,7 @@ class MovieRepository extends EntityRepository
                        ->setParameter('min', $min)
                       ->setParameter('max', $max)
                       ->getQuery()
-                       ->getResult();
+                       ->getSingleScalarResult();
                        
         return $qb;
     }

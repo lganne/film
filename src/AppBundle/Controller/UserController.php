@@ -71,7 +71,7 @@ class UserController extends Controller
 
     // last username entered by the user
     $lastUsername = (null === $session) ? '' : $session->get(Security::LAST_USERNAME);
-
+       
     return $this->render(
         'user/login.html.twig',
         array(
@@ -87,6 +87,7 @@ class UserController extends Controller
      */
     public function loginCheckAction()
     {
+        return $this->render('user/login.html.twig');
     }
     
     /**
