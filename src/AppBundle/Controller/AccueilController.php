@@ -26,6 +26,7 @@ class AccueilController extends Controller
           $ok=  $request->query->get('ok');     
            $offset=($page-1)*$numParPage;
          $datemin=$repo->FiltreDate();  // remplir combo select date
+         
             if(isset($min)&& $min!=0)
             {
                 $data=$repo->resultatFitre($max,$min,$offset);
@@ -52,10 +53,7 @@ class AccueilController extends Controller
               'numParPage'=>$numParPage
                 );
         
-//        'offset'=>$offset,
-  //             'numParPage'=>$numParPage
-        
-       // print_r($data);
+
         return $this->render('default/index.html.twig',$data);
     }
     /**

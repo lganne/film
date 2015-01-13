@@ -9,7 +9,7 @@
            <select name="min">
                {% set datmin=datefiltre %}
                {% for i in datmin.. 'now'|date('Y') %}
-                             <option  value="{{datmin}}" selected="selected">   {{datmin}}</option>
+                             <option  value="{{datmin}}" >   {{datmin}}</option>
                         {% set datmin=datmin+1%}
                {% endfor%}
 

@@ -41,7 +41,8 @@ class MovieRepository extends EntityRepository
                         ->where('m.annee BETWEEN :min AND :max')
                        ->setParameter('min', $min)
                       ->setParameter('max', $max)
-                      ->setMaxResults(54,$offset)
+                      ->setMaxResults(54)
+                       ->setFirstResult( $offset)
                       ->getQuery()
                        ->getResult();
                        

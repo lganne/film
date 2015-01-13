@@ -87,7 +87,8 @@ class UserController extends Controller
      */
     public function loginCheckAction()
     {
-        return $this->render('user/login.html.twig');
+        $ok=0;
+        return $this->render('user/login.html.twig',array("ok"=>$ok));
     }
     
     /**
@@ -96,5 +97,11 @@ class UserController extends Controller
      */
     public function logoutAction()
     {}
-  
+  /**
+   * @Route("/mdpOublie/{ok}",name="mdpOublie")
+   */
+    public function mdpOublieAction($ok)
+    {
+         return $this->render('user/login.html.twig',array("ok"=>$ok));
+    }
 }
