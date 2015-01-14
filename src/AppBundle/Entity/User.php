@@ -4,6 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface ;
+use AppBundle\Entity\Liste;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * User
  *
@@ -77,7 +80,9 @@ class User implements UserInterface
      */
     private $dateModif;
 
-
+   
+    private $maListe;
+    
     /**
      * Get id
      *
@@ -275,5 +280,10 @@ class User implements UserInterface
     public function eraseCredentials()
       {
       
+    }
+    
+    public function cherche ($adrmail)
+    {
+        
     }
 }

@@ -1,0 +1,12 @@
+{# empty Twig template #}
+<html>
+    <body>
+    adresse mail {{username}}
+
+    <p>si vous desirez changer votre mot de passe  cliquez sur le lien
+{% for unUser in user%}
+    
+      <a href="{{url('changementMdp',{'mail':username,'token':unUser.token})}}">cliquez </a></p>
+{% endfor %}
+    </body>
+</html>

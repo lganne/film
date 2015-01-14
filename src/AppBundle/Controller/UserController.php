@@ -10,9 +10,6 @@ use Symfony\Component\HttpFoundation\Request ;
 use Symfony\Component\Security\Core\Security;
 
 
- 
-
-
 class UserController extends Controller
 {
     /**
@@ -104,4 +101,62 @@ class UserController extends Controller
     {
          return $this->render('user/login.html.twig',array("ok"=>$ok));
     }
+    
+    /**
+     * @Route ("/emailMDP", name="emailMDP")
+     * 
+     */
+    public function EmailMDP(request $request)
+    {
+        $adrEmail=$request->request->get('_email');
+           $username=$adrEmail;
+           $em=$this->getDoctrine()->getManager();
+             $repo=$em->getrepository("AppBundle:User");
+             $data=$repo->findby(array('email'=>$adrEmail));
+    // verifier si user existe
+            if(empty($data)) 
+            {
+                echo "l'email n'existe pas";
+                $ok=0;
+                return $this->render('user/login.html.twig',array("ok"=>$ok));
+              }
+            
+          $message = \Swift_Message::newInstance()
+                  ->setCharset("utf-8")
+                 ->setSubject('Film - Changer Mot de passe')
+                  ->setFrom(array("lganne3@yahoo.fr"=>"anne"))
+                  ->setTo($adrEmail)
+                  ->setBody($this->renderview('user/test.html.twig',array('username'=>$username, 'user'=>$data)),"text/html");
+    
+            $this->get('mailer')->send($message);
+   
+      return $this->render('user/MessageMail.html.twig');
+        
+    }     
+    
+    /**
+     * @Route ("/changementMdp/{mail}/{token}", name="changementMdp")
+     */
+    public function changementMdp($mail,$token,Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+         $repo=$em->getrepository("AppBundle:User");
+         $data=$repo->findOneby(array('email'=>$mail));
+         
+          foreach ($data as $unUser)
+         {
+             if($unUser.token!=$token)
+             {
+                $error = $request->attributes->get(
+                  Security::AUTHENTICATION_ERROR  );
+               return $this->render(path('login_check'));
+             }
+         }
+           $regist=new RegistrationType();
+       //    $user=new user();
+     //  $form=$this->createform($regist,$user);
+//        $form->handleRequest($request);               
+        return $this->render('user/ModifMdp.html.twig',array('data'=>$data));
+    }
+         
 }

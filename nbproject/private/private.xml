@@ -5,11 +5,12 @@
         <group>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/login.html.twig</file>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/base.html.twig</file>
-            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Controller/AccueilController.php</file>
+            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/UserRepository.php</file>
+            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/MessageMail.html.twig</file>
             <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Controller/UserController.php</file>
-            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/default/detail.html.twig</file>
+            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/test.html.twig</file>
             <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/MovieRepository.php</file>
-            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/default/index.html.twig</file>
+            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/ModifMdp.html.twig</file>
         </group>
     </open-files>
 </project-private>

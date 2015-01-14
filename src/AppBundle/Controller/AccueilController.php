@@ -36,8 +36,8 @@ class AccueilController extends Controller
             }
             else
             {
-               $min=0;
-               $max=3000;
+               $min=1916;
+               $max=2015;
                $nbr=$repo->countAll();
                 $nbrePage=  \ceil($nbr/54);
                 $data=$repo->findby(array(),array("note"=>"DESC"),54,$offset);

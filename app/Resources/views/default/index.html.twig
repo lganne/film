@@ -9,9 +9,14 @@
            <select name="min">
                {% set datmin=datefiltre %}
                {% for i in datmin.. 'now'|date('Y') %}
-                             <option  value="{{datmin}}" >   {{datmin}}</option>
+                   {% if (datmin==min)%}
+                       <option  value="{{datmin}}" selected>   {{datmin}}</option>
+                    {% else %}
+                              <option  value="{{datmin}}" >   {{datmin}}</option>
+                     {%endif %}
                         {% set datmin=datmin+1%}
                {% endfor%}
+             
 
            </select>
                   <label>A</label>
@@ -19,7 +24,11 @@
 
                {% set datmin=datefiltre %}
                {% for i in datmin.. 'now'|date('Y') %}
-                             <option value="{{datmin}}">   {{datmin}}</option>
+                         {% if (datmin==max)%}
+                       <option  value="{{datmin}}" selected>   {{datmin}}</option>
+                    {% else %}
+                              <option  value="{{datmin}}" >   {{datmin}}</option>
+                     {%endif %}
                         {% set datmin=datmin+1%}
                {% endfor%}
                </select>
