@@ -64,29 +64,64 @@ class AccueilController extends Controller
         if (isset($id))
         {
             $em=$this->getDoctrine()->getManager();
-        $repo=$em->getrepository("AppBundle:Movie");
-        $data=$repo->find($id);
+            $repo=$em->getrepository("AppBundle:Movie");
+             $data=$repo->find($id);
+             $user=$this->getuser();
+             if ($user!=null)
+             {
+                $Dejalister= $this->getUser()->TrouverUnFilm($id);
+             }
+                     
         }
-         return $this->render('default/detail.html.twig',array("detail"=>$data));
+         return $this->render('default/detail.html.twig',array("detail"=>$data,"mess"=>null,'dejalister'=>$Dejalister));
     }
     
     /**
-     * @Route("/parDate", name="parDate")
+     * @Route("listeAjout/{id}", name="listeAjout",requirements={"'id":"\d+"})
      */
-//    public function  parDateAction(Request $request)
-//    {
-//       $min= $request->request->get('min');
-//       $max= $request->request->get('max');
-//       $em=$this->getDoctrine()->getManager();
-//        $repo=$em->getrepository("AppBundle:Movie");
-//        $data=$repo->resultatFitre($max,$min);
-//       $count=$repo->countFiltre($max,$min);
-//       dump($count);
-//       die();
-//        return $this->render('default/date.html.twig',array('data'=>$data));
-//    }
-
+    public function listeAjoutAction($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $repo=$em->getRepository("AppBundle:Movie");
+       $movieFind=$repo->find($id);
+              
+       $user= $this->getuser();  // l'user qui est deja connecter
+       $user->addMovie($movieFind);
+       $em->persist($user);
+       $em->flush();
+       
+       
+        return $this->render('default/detail.html.twig',array("detail"=>$movieFind,"mess"=>"Le film vient d'être ajouter à votre liste",'dejalister'=>false));
+    }
    
-   
+    /**
+     * @Route("liste", name="liste")
+     */
+    public function listeAction()
+    {
+        $user= $this->getuser();
+          $data = $user->getMovies();
+        
+          return $this->render('default/liste.html.twig',array("detail"=>$data));
+          
+    }
+    
+    /**
+     * @Route("listeRetire/{id}",name="listeRetire")
+     */
+    public function listeRetireAction($id)
+    {
+        $user= $this->getuser();
+         
+          $em=$this->getDoctrine()->getManager();
+        $repo=$em->getRepository("AppBundle:Movie");
+       $movieFind=$repo->find($id);
+       $user->removeMovie($movieFind);
+        $em->persist($user);
+        $em->flush();
+       
+           return $this->render('default/detail.html.twig',array("detail"=>$movieFind,"mess"=>null, 'dejalister'=>false));
+    }
+    
        
 }

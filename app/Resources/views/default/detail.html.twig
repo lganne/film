@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block title %} {{parent()}}| {{detail.titre}}{% endblock %}
 {% block body %}
+    
+    {% if (mess==null  and dejalister==false ) %}
+         <h4><a href="{{path('listeAjout',{'id':detail.id})}}">Ajouter ma liste</a></h4>
+      {% else %}
+          <h4><a href="{{path('listeRetire',{'id':detail.id})}}">Retirer de ma liste</a></h4>
+          <h4>  {{mess}}</h4>
+     {% endif %}
+     
     <h2> {{detail.titre}}</h2>
     <h3>Note : {{detail.note}}</h3>
        <img src="{{detail.urlAffiche}}" value="{{detail.id}}" />

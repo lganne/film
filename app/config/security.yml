@@ -16,6 +16,7 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - {path: ^/user, roles: ROLE_USER}
 
     encoders:
         AppBundle\Entity\User:

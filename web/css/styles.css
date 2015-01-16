@@ -1,0 +1,13 @@
+body
+{
+    background:#080808;
+}
+table
+{
+    width:80%;
+}
+
+td{
+    width:150px;
+    border:solid 1px white;
+}

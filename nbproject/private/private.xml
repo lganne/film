@@ -4,12 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/login.html.twig</file>
+            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/Liste.php</file>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/base.html.twig</file>
-            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/UserRepository.php</file>
-            <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/MessageMail.html.twig</file>
             <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Controller/UserController.php</file>
+            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/User.php</file>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/test.html.twig</file>
-            <file>file:/C:/wamp/www/symfony2/film/src/AppBundle/Entity/MovieRepository.php</file>
             <file>file:/C:/wamp/www/symfony2/film/app/Resources/views/user/ModifMdp.html.twig</file>
         </group>
     </open-files>

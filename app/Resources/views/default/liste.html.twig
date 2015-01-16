@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    hello
+    <table>
+        <tr>
+               {% set i=0%}
+    {% for unDetail in detail %}
+        {% if i==7 %}
+              </tr><tr>
+                {% set i=1%}
+        {%endif%}
+        <td>
+            <h4> {{unDetail.titre}}</h4><br>
+            <a href="{{path('detail',{'id':unDetail.id}) }}"  > <img src="{{unDetail.urlAffiche}}" value="{{unDetail.id}}" /></a>
+        </td>
+            {% set i=i+1%}
+     {% endfor %}
+    </tr>
+    </table>
+  {% endblock %}

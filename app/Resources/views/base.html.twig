@@ -16,10 +16,11 @@
                 <ul class="nav nav-pills">
                     <li><a href="{{ path('homepage') }}" title="Accueil">Accueil</a></li>
                  {%   if ( app.user==null) %}
-                      <li><a href="{{ path('login_check') }}" title="Login">Login</a></li>
+                      <li><a href="{{ path('login_check',{'ok':0})}}" title="Login">Login</a></li>
                        <li><a href="{{ path('inscription') }}" title="inscription">Inscription</a></li>
                   {% else %}
                         <li><a href="">Bonjour {{app.user.username|capitalize}}</a></li>
+                        <li><a href="liste">Ma liste</a></li>
                        <li><a href="{{ path('logout') }}" title="LogOut">Log out</a></li>
                    {% endif %}
                          

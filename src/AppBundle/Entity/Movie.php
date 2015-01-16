@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Movie
 {
+    // ...
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="movies")
+     **/
+    private $users;
     /**
      * @var integer
      *
