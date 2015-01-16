@@ -1,54 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
- 
+    <section class="filtre">
     {#  filtre date #}
-    <h4>Trier par date</h4>
-   <form method="get"  />   {# action="{{path('parDate')}}">#}
-            <label>De</label>
-           <select name="min">
-               {% set datmin=datefiltre %}
-               {% for i in datmin.. 'now'|date('Y') %}
-                   {% if (datmin==min)%}
-                       <option  value="{{datmin}}" selected>   {{datmin}}</option>
-                    {% else %}
-                              <option  value="{{datmin}}" >   {{datmin}}</option>
-                     {%endif %}
-                        {% set datmin=datmin+1%}
-               {% endfor%}
-             
+            
+           <form method="get" class="formulaire" />   {# action="{{path('parDate')}}">#}
+                    <label>Sélectionner une date</label>
+                   <select name="min">
+                       {% set datmin=datefiltre %}
+                       {% for i in datmin.. 'now'|date('Y') %}
+                           {% if (datmin==min)%}
+                               <option  value="{{datmin}}" selected>   {{datmin}}</option>
+                            {% else %}
+                                      <option  value="{{datmin}}" >   {{datmin}}</option>
+                             {%endif %}
+                                {% set datmin=datmin+1%}
+                       {% endfor%}
 
-           </select>
-                  <label>A</label>
-               <select name="max">
+                   </select>
+                          <label>A</label>
+                       <select name="max">
 
-               {% set datmin=datefiltre %}
-               {% for i in datmin.. 'now'|date('Y') %}
-                         {% if (datmin==max)%}
-                       <option  value="{{datmin}}" selected>   {{datmin}}</option>
-                    {% else %}
-                              <option  value="{{datmin}}" >   {{datmin}}</option>
-                     {%endif %}
-                        {% set datmin=datmin+1%}
-               {% endfor%}
-               </select>
-               <input type='submit' name='ok' value='ok'   />
-{#<a id="btn_delete" href="{{ path('parDate') }}">ok</a>#}
-    </form>
-        <br>
-    {#  pagination  #}
+                       {% set datmin=datefiltre %}
+                       {% for i in datmin.. 'now'|date('Y') %}
+                                 {% if (datmin==max)%}
+                               <option  value="{{datmin}}" selected>   {{datmin}}</option>
+                            {% else %}
+                                      <option  value="{{datmin}}" >   {{datmin}}</option>
+                             {%endif %}
+                                {% set datmin=datmin+1%}
+                       {% endfor%}
+                       </select>
+                       <input type='submit' name='ok' value='ok'   />
+        {#<a id="btn_delete" href="{{ path('parDate') }}">ok</a>#}
+            </form>
       
-    Affiche les films de {{offset+1}} a {{offset+numParPage}}<br>
-  {%if (page>1)%}
-           <<<a href="{{path('homepage',{'page':page-1,'min':min, 'max':max})}}">page precedente</a>
-     {% endif%}
-         page {{page}} / {{nbrePg}}
-         
-        {% if(page<nbrePg)%}
-                <a href="{{path('homepage',{'page':page+1,'min':min, 'max':max})}}">page suivante</a> >>
-       
-       {% endif%} 
-    
+    {#  pagination  #}
+        <div class="pagination">
+            Affiche les films de {{offset+1}} a {{offset+numParPage}}&nbsp;&nbsp;
+          {%if (page>1)%}
+                   <<<a href="{{path('homepage',{'page':page-1,'min':min, 'max':max})}}">page precedente</a>
+             {% endif%}
+                 page {{page}} / {{nbrePg}}
+
+                {% if(page<nbrePg)%}
+                        <a href="{{path('homepage',{'page':page+1,'min':min, 'max':max})}}">page suivante</a> >>
+
+               {% endif%} 
+        </div>
+    </section>
         
      
     <table>
@@ -60,8 +60,8 @@
                  {% set i=1%}
            {%endif%}
         <td>
-             <h4> {{film.titre}}</h4> 
-             <a href="{{path('detail',{'id':film.id}) }}"  ><img src="{{film.urlAffiche}}" value="{{film.id}}" /><a>
+{#             <h4> {{film.titre}}</h4> #}
+             <a href="{{path('detail',{'id':film.id}) }}"  ><img src="{{film.urlAffiche}}" value="{{film.id}}" title="{{film.titre}}"/><a>
                   
         </td>
         {% set i=i+1%}

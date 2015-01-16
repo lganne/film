@@ -67,6 +67,7 @@ class AccueilController extends Controller
             $repo=$em->getrepository("AppBundle:Movie");
              $data=$repo->find($id);
              $user=$this->getuser();
+              $Dejalister=false;
              if ($user!=null)
              {
                 $Dejalister= $this->getUser()->TrouverUnFilm($id);

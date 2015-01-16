@@ -1,13 +1,63 @@
 body
 {
     background:#080808;
+    color: #dadada;
+}
+
+ul
+{
+     width:50%;
+     margin:auto;
+}
+li
+{
+    text-transform: uppercase;
+  
+    font-size:18px;
+}
+li a
+{
+     color: whitesmoke;
 }
 table
 {
-    width:80%;
+    width:90%;
+    margin:auto;
 }
 
 td{
-    width:150px;
+    width:200px;
     border:solid 1px white;
+}
+input,select
+{
+    color: #080808;
+}
+
+.filtre
+{
+    width:80%;
+    margin:auto;
+}
+
+.formulaire, .pagination
+{
+    width :47%;
+    display: inline-block;
+    font-size:16px;
+}
+#imgDetail
+{
+    width: 20%;
+     display: inline-block;
+     padding:2px;
+}
+.detail
+{
+    width:70%;
+      display: inline-block;
+}
+.detail td
+{
+    width: auto;
 }

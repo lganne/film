@@ -77,6 +77,7 @@ class UserController extends Controller
             // last username entered by the user
             'last_username' => $lastUsername,
             'error'         => $error,
+            'ok'=>0
         )
     );
 }

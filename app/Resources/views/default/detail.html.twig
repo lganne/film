@@ -2,17 +2,19 @@
 {% block title %} {{parent()}}| {{detail.titre}}{% endblock %}
 {% block body %}
     
-    {% if (mess==null  and dejalister==false ) %}
+    {% if (mess==null  and dejalister==false  and app.user!=null) %}
          <h4><a href="{{path('listeAjout',{'id':detail.id})}}">Ajouter ma liste</a></h4>
-      {% else %}
+        
+      {% elseif (app.user!=null)%}
           <h4><a href="{{path('listeRetire',{'id':detail.id})}}">Retirer de ma liste</a></h4>
           <h4>  {{mess}}</h4>
+      
      {% endif %}
      
     <h2> {{detail.titre}}</h2>
     <h3>Note : {{detail.note}}</h3>
-       <img src="{{detail.urlAffiche}}" value="{{detail.id}}" />
-    <table border='1px'>
+       <img src="{{detail.urlAffiche}}" value="{{detail.id}}" id="imgDetail"/>
+    <table border='1px' class="detail">
         <tr><th>Genre</th><th>date de sortie</th><th>Resumer</th><th>Acteurs</th><th>Realisateur</th><th>Scenariste</th><th>pays</th><th>votes</th></tr>
         <tr>
             <td>
